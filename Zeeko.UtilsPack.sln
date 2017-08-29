@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zeeko.UtilsPack", "Zeeko.UtilsPack.csproj", "{3B4BCE17-94E7-46A9-80A3-CB3E411507D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zeeko.UtilsPack", "src\Zeeko.UtilsPack.csproj", "{759547F3-30EB-4541-B99E-5BAA88668AC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test\Test.csproj", "{C7B89664-8FAD-486F-BC9E-CD3A30A71655}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +13,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3B4BCE17-94E7-46A9-80A3-CB3E411507D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B4BCE17-94E7-46A9-80A3-CB3E411507D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B4BCE17-94E7-46A9-80A3-CB3E411507D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B4BCE17-94E7-46A9-80A3-CB3E411507D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{759547F3-30EB-4541-B99E-5BAA88668AC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{759547F3-30EB-4541-B99E-5BAA88668AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{759547F3-30EB-4541-B99E-5BAA88668AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{759547F3-30EB-4541-B99E-5BAA88668AC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7B89664-8FAD-486F-BC9E-CD3A30A71655}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7B89664-8FAD-486F-BC9E-CD3A30A71655}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7B89664-8FAD-486F-BC9E-CD3A30A71655}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7B89664-8FAD-486F-BC9E-CD3A30A71655}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2107691E-1CE5-479A-9734-BC0FCE786C8B}
 	EndGlobalSection
 EndGlobal
