@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27009.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zeeko.UtilsPack", "src\Zeeko.UtilsPack.csproj", "{759547F3-30EB-4541-B99E-5BAA88668AC4}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test\Test.csproj", "{C7B89664-8FAD-486F-BC9E-CD3A30A71655}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeeko.UtilsPack.BCLExt", "Zeeko.UtilsPack.BCLExt\Zeeko.UtilsPack.BCLExt.csproj", "{6EA47F15-1C37-43E2-A457-B56346D62087}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeekoUtilsPack.AspNetCore", "ZeekoUtilsPack.AspNetCore\ZeekoUtilsPack.AspNetCore.csproj", "{F413C705-FC6E-4A9C-B527-1F73755580F6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeekoUtilsPack.BCLExt", "ZeekoUtilsPack.BCLExt\ZeekoUtilsPack.BCLExt.csproj", "{A9BBCE5C-BDC8-494A-9C4C-55CB7C8DCAA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{759547F3-30EB-4541-B99E-5BAA88668AC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{759547F3-30EB-4541-B99E-5BAA88668AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{759547F3-30EB-4541-B99E-5BAA88668AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{759547F3-30EB-4541-B99E-5BAA88668AC4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C7B89664-8FAD-486F-BC9E-CD3A30A71655}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C7B89664-8FAD-486F-BC9E-CD3A30A71655}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7B89664-8FAD-486F-BC9E-CD3A30A71655}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7B89664-8FAD-486F-BC9E-CD3A30A71655}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6EA47F15-1C37-43E2-A457-B56346D62087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6EA47F15-1C37-43E2-A457-B56346D62087}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6EA47F15-1C37-43E2-A457-B56346D62087}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6EA47F15-1C37-43E2-A457-B56346D62087}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F413C705-FC6E-4A9C-B527-1F73755580F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F413C705-FC6E-4A9C-B527-1F73755580F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F413C705-FC6E-4A9C-B527-1F73755580F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F413C705-FC6E-4A9C-B527-1F73755580F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9BBCE5C-BDC8-494A-9C4C-55CB7C8DCAA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9BBCE5C-BDC8-494A-9C4C-55CB7C8DCAA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9BBCE5C-BDC8-494A-9C4C-55CB7C8DCAA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9BBCE5C-BDC8-494A-9C4C-55CB7C8DCAA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

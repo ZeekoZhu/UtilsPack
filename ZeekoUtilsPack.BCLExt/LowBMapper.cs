@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Zeeko.UtilsPack.BCLExt
+namespace ZeekoUtilsPack.BCLExt
 {
     /// <summary>
     /// 提供简单的 object to object 的映射功能
@@ -24,7 +24,7 @@ namespace Zeeko.UtilsPack.BCLExt
         {
             private readonly TI _src;
 
-            private delegate void Assign<T, TO>(T src, ref TO target);
+            private delegate void Assign<in T, TO>(T src, ref TO target);
 
             public MapContext(TI src)
             {
@@ -35,7 +35,7 @@ namespace Zeeko.UtilsPack.BCLExt
             {
                 var srcType = typeof(TI);
                 var targetType = typeof(TO);
-                var key = ComputeMapperKey(srcType, targetType);
+                var key = ComputeMapperKey(srcType, targetType, 0x10);
 
                 if (MappersCollection.TryGetValue(key, out var del) == false)
                 {
@@ -51,6 +51,7 @@ namespace Zeeko.UtilsPack.BCLExt
 
                     MappersCollection.Add(key, del);
                 }
+                var temp = new TO();
                 return ((Func<TI, TO>)del)(_src);
             }
 
@@ -58,7 +59,7 @@ namespace Zeeko.UtilsPack.BCLExt
             {
                 var srcType = typeof(TI);
                 var targetType = typeof(TO);
-                var key = ComputeMapperKey(srcType, targetType);
+                var key = ComputeMapperKey(srcType, targetType, 0x01);
                 if (AssignersCollection.TryGetValue(key, out var del) == false)
                 {
                     var param = Expression.Parameter(srcType, "src");
@@ -74,13 +75,13 @@ namespace Zeeko.UtilsPack.BCLExt
 
                     MappersCollection.Add(key, del);
                 }
-                ((Assign<TI, TO>) del)(_src, ref targetObj);
+                ((Assign<TI, TO>)del)(_src, ref targetObj);
             }
         }
 
-        static ulong ComputeMapperKey(Type src, Type target)
+        static ulong ComputeMapperKey(Type src, Type target, byte method)
         {
-            return ((ulong)src.GetHashCode() << 32) | (uint)target.GetHashCode();
+            return ((ulong)src.GetHashCode() << 32) | (uint)target.GetHashCode() << 8 | method;
         }
     }
 }

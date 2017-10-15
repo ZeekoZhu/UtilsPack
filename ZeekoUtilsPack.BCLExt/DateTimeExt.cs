@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Zeeko.UtilsPack.BCLExt
+namespace ZeekoUtilsPack.BCLExt
 {
     public static class DateTimeExt
     {

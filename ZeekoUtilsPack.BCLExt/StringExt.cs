@@ -2,7 +2,7 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Zeeko.UtilsPack.BCLExt
+namespace ZeekoUtilsPack.BCLExt
 {
     public static class StringExt
     {

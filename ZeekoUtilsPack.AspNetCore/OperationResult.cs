@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace Zeeko.UtilsPack
+namespace ZeekoUtilsPack.AspNetCore
 {
     public class OperationResult
     {

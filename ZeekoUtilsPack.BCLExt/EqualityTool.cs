@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Zeeko.UtilsPack.BCLExt
+namespace ZeekoUtilsPack.BCLExt
 {
     public static class Equality<T>
     {

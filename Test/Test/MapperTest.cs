@@ -1,5 +1,5 @@
 using Xunit;
-using Zeeko.UtilsPack.BCLExt;
+using ZeekoUtilsPack.BCLExt;
 
 namespace Test
 {
