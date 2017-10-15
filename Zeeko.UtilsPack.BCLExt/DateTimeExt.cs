@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Zeeko.UtilsPack
+namespace Zeeko.UtilsPack.BCLExt
 {
-    public static class DateTimeTools
+    public static class DateTimeExt
     {
         /// <summary>
         /// 获取到 1970/1/1 之间的毫秒数

@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Zeeko.UtilsPack.csproj" />
+    <ProjectReference Include="..\..\Zeeko.UtilsPack.BCLExt\Zeeko.UtilsPack.BCLExt.csproj" />
   </ItemGroup>
 
 </Project>

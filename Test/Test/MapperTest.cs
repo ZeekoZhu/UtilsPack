@@ -1,6 +1,5 @@
-using System;
 using Xunit;
-using Zeeko.UtilsPack;
+using Zeeko.UtilsPack.BCLExt;
 
 namespace Test
 {
@@ -26,6 +25,21 @@ namespace Test
                 B = "hello"
             };
             var target = src.Map().To<ItemDto>();
+            Assert.Equal(src.A, target.A);
+            Assert.Equal(src.B, target.B);
+        }
+
+        [Fact]
+        public void Assign()
+        {
+            var src = new Item
+            {
+                A = 123,
+                B = "hello"
+            };
+            var target = new ItemDto();
+
+            src.Map().To(ref target);
             Assert.Equal(src.A, target.A);
             Assert.Equal(src.B, target.B);
         }

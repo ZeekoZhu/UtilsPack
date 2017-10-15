@@ -1,16 +1,20 @@
-ï»¿using System;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Zeeko.UtilsPack
+namespace Zeeko.UtilsPack.BCLExt
 {
-    public static class EncryptTools
+    public static class StringExt
     {
+        public static bool IsNullOrEmpty(this string str) => string.IsNullOrEmpty(str);
+
+        public static bool IsNullOrWhiteSpace(this string str) => string.IsNullOrWhiteSpace(str);
+
         /// <summary>
-        /// MD5 åŠ å¯†
+        /// MD5 ¼ÓÃÜ
         /// </summary>
         /// <param name="str">The string.</param>
-        /// <returns>å¯†æ–‡</returns>
+        /// <returns>ÃÜÎÄ</returns>
         public static string GetMd5(this string str)
         {
             MD5 m = MD5.Create();
