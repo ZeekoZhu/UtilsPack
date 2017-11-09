@@ -11,7 +11,7 @@ namespace ZeekoUtilsPack.AspNetCore.Jwt
     /// </summary>
     public class BearerAuthorizeAttribute : AuthorizeAttribute
     {
-        public BearerAuthorizeAttribute(params int[] roles) : base("Bearer")
+        public BearerAuthorizeAttribute() : base("Bearer")
         {
         }
     }
