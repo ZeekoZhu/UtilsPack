@@ -20,7 +20,7 @@ namespace Test.JwtTests
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddEazyJwt(new EasySymmetricOptions("test")
+            services.AddEasyJwt(new EasySymmetricOptions("test")
             {
                 Audience = "test",
                 Issuer = "test",

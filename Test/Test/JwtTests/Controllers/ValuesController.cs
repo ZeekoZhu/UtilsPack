@@ -29,7 +29,7 @@ namespace Test.JwtTests.Controllers
             return "value";
         }
 
-        [EazyJwtAuthorize]
+        [EasyJwtAuthorize]
         // POST api/<controller>
         [HttpPost]
         [Consumes("application/x-www-form-urlencoded")]

@@ -21,7 +21,7 @@ namespace Test.JwtTests
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddEazyJwt(new EasyRSAOptions(PlatformServices.Default.Application.ApplicationBasePath)
+            services.AddEasyJwt(new EasyRSAOptions(PlatformServices.Default.Application.ApplicationBasePath)
             {
                 Audience = "test",
                 Issuer = "test",

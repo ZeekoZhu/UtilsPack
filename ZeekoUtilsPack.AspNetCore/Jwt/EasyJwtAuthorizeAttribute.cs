@@ -11,9 +11,9 @@ namespace ZeekoUtilsPack.AspNetCore.Jwt
     /// <summary>
     /// Jwt 验证
     /// </summary>
-    public class EazyJwtAuthorizeAttribute : AuthorizeAttribute
+    public class EasyJwtAuthorizeAttribute : AuthorizeAttribute
     {
-        public EazyJwtAuthorizeAttribute()
+        public EasyJwtAuthorizeAttribute()
         {
             AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme + "," +
                                     JwtBearerDefaults.AuthenticationScheme;

@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,7 +7,7 @@ namespace ZeekoUtilsPack.AspNetCore.Jwt
 {
     public static class EasyJwtExtensions
     {
-        public static IServiceCollection AddEazyJwt(this IServiceCollection services, EasyJwtOption option)
+        public static IServiceCollection AddEasyJwt(this IServiceCollection services, EasyJwtOption option)
         {
             var easyJwt = new EasyJwt(option);
             var jwtParams = easyJwt.ExportTokenParameters();
