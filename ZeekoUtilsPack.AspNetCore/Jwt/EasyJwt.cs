@@ -51,8 +51,7 @@ namespace ZeekoUtilsPack.AspNetCore.Jwt
 
         public (ClaimsPrincipal, AuthenticationProperties) GenerateAuthTicket(string userName, IEnumerable<Claim> claims, DateTime expiratoin)
         {
-            ClaimsIdentity identity = new ClaimsIdentity(new GenericIdentity(userName));
-            var principal = new ClaimsPrincipal(identity);
+            var principal = new ClaimsPrincipal();
             var authProps = new AuthenticationProperties();
             var token = GenerateToken(userName, claims, expiratoin);
             authProps.StoreTokens(new[]

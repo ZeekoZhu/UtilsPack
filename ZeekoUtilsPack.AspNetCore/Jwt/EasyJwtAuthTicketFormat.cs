@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.IdentityModel.Tokens;
@@ -13,10 +14,7 @@ namespace ZeekoUtilsPack.AspNetCore.Jwt
     /// </summary>
     public class EasyJwtAuthTicketFormat : ISecureDataFormat<AuthenticationTicket>
     {
-        private const string Algorithm = SecurityAlgorithms.HmacSha256;
-        private readonly TokenValidationParameters validationParameters;
-        private readonly IDataSerializer<AuthenticationTicket> ticketSerializer;
-        private readonly IDataProtector dataProtector;
+        private readonly TokenValidationParameters _validationParameters;
 
         /// <summary>
         /// Create a new instance of the <see cref="EasyJwtAuthTicketFormat"/>
@@ -25,24 +23,10 @@ namespace ZeekoUtilsPack.AspNetCore.Jwt
         /// instance of <see cref="TokenValidationParameters"/> containing the parameters you
         /// configured for your application
         /// </param>
-        /// <param name="ticketSerializer">
-        /// an implementation of <see cref="IDataSerializer{TModel}"/>. The default implemenation can
-        /// also be passed in"/&gt;
-        /// </param>
-        /// <param name="dataProtector">
-        /// an implementation of <see cref="IDataProtector"/> used to securely encrypt and decrypt
-        /// the authentication ticket.
-        /// </param>
-        public EasyJwtAuthTicketFormat(TokenValidationParameters validationParameters,
-            IDataSerializer<AuthenticationTicket> ticketSerializer,
-            IDataProtector dataProtector)
+        public EasyJwtAuthTicketFormat(TokenValidationParameters validationParameters)
         {
-            this.validationParameters = validationParameters ??
+            _validationParameters = validationParameters ??
                                         throw new ArgumentNullException($"{nameof(validationParameters)} cannot be null");
-            this.ticketSerializer = ticketSerializer ??
-                                    throw new ArgumentNullException($"{nameof(ticketSerializer)} cannot be null"); ;
-            this.dataProtector = dataProtector ??
-                                 throw new ArgumentNullException($"{nameof(dataProtector)} cannot be null");
         }
 
         /// <summary>
@@ -64,19 +48,11 @@ namespace ZeekoUtilsPack.AspNetCore.Jwt
         /// <returns></returns>
         public AuthenticationTicket Unprotect(string protectedText, string purpose)
         {
-            var authTicket = ticketSerializer.Deserialize(
-                dataProtector.Unprotect(
-                    Base64UrlTextEncoder.Decode(protectedText)));
-
-            var embeddedJwt = authTicket
-                .Properties?
-                .GetTokenValue(JwtBearerDefaults.AuthenticationScheme);
-
             try
             {
                 // 校验并读取 jwt 中的用户信息（Claims）
                 var principal = new JwtSecurityTokenHandler()
-                    .ValidateToken(embeddedJwt, validationParameters, out var token);
+                    .ValidateToken(protectedText, _validationParameters, out var token);
 
                 if (!(token is JwtSecurityToken))
                 {
@@ -84,6 +60,7 @@ namespace ZeekoUtilsPack.AspNetCore.Jwt
                 }
                 // todo: 此处还可以校验 token 是否被吊销
                 // 将 jwt 中的用户信息与 Cookie 中的包含的用户信息合并起来
+                var authTicket = new AuthenticationTicket(principal, CookieAuthenticationDefaults.AuthenticationScheme);
                 authTicket.Principal.AddIdentities(principal.Identities);
                 return authTicket;
             }
@@ -110,9 +87,10 @@ namespace ZeekoUtilsPack.AspNetCore.Jwt
         /// <returns>encrypted string representing the <see cref="AuthenticationTicket"/></returns>
         public string Protect(AuthenticationTicket data, string purpose)
         {
-            var array = ticketSerializer.Serialize(data);
-
-            return Base64UrlTextEncoder.Encode(dataProtector.Protect(array));
+            var token = data
+                .Properties?
+                .GetTokenValue(JwtBearerDefaults.AuthenticationScheme);
+            return token;
         }
     }
 }

@@ -73,6 +73,8 @@ namespace Test.JwtTests
                 KeyValuePair.Create("value","value")
             }));
             apiTokenResp.IsSuccessStatusCode.Should().BeTrue();
+            var userName = await apiTokenResp.Content.ReadAsStringAsync();
+            userName.Should().Be("\"test\"");
         }
     }
 }

@@ -34,8 +34,7 @@ namespace Test.JwtTests.Controllers
                 new Claim(ClaimTypes.NameIdentifier, user, ClaimValueTypes.String)
             };
             var token = _jwt.GenerateToken(user, claims, DateTime.Now.AddDays(1));
-            var (principal, authProps) = _jwt.GenerateAuthTicket(user, claims, DateTime.Now.AddMinutes(30));
-            await HttpContext.SignInAsync(principal, authProps);
+            await HttpContext.SignInAsync(user, claims, DateTime.Now.AddDays(1));
             return Json(new {Token = token});
         }
     }
