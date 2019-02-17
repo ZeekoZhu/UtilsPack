@@ -11,10 +11,10 @@ namespace ZeekoUtilsPack.BCLExt
         public static bool IsNullOrWhiteSpace(this string str) => string.IsNullOrWhiteSpace(str);
 
         /// <summary>
-        /// MD5 ¼ÓÃÜ
+        /// MD5 åŠ å¯†
         /// </summary>
         /// <param name="str">The string.</param>
-        /// <returns>ÃÜÎÄ</returns>
+        /// <returns>å¯†æ–‡</returns>
         public static string GetMd5(this string str)
         {
             MD5 m = MD5.Create();
