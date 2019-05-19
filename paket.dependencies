@@ -1,0 +1,26 @@
+source https://api.nuget.org/v3/index.json
+
+storage: none
+framework: netstandard2.0, netcoreapp2.2
+
+nuget FluentAssertions
+nuget Microsoft.AspNetCore
+nuget Microsoft.AspNetCore.Authentication.Cookies
+nuget Microsoft.AspNetCore.Authentication.JwtBearer
+nuget Microsoft.AspNetCore.CookiePolicy
+nuget Microsoft.AspNetCore.Mvc
+nuget Microsoft.AspNetCore.Mvc.Testing
+nuget Microsoft.Extensions.PlatformAbstractions
+nuget Microsoft.IdentityModel.Tokens
+nuget Microsoft.NET.Test.Sdk
+nuget xunit
+nuget xunit.runner.visualstudio
+// [ FAKE GROUP ]
+group Build
+    storage: none
+    framework: netstandard2.0
+    source https://api.nuget.org/v3/index.json
+    source https://www.myget.org/F/zeekoget/api/v3/index.json
+    nuget Fake.DotNet.Cli
+    nuget FSharp.Core
+    nuget MyFakeTools ~> 0.0.14

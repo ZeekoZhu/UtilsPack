@@ -1,0 +1,4 @@
+Microsoft.AspNetCore.Authentication.Cookies
+Microsoft.AspNetCore.Authentication.JwtBearer
+Microsoft.AspNetCore.Mvc
+Microsoft.IdentityModel.Tokens

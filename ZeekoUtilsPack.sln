@@ -3,11 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27009.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{2DE3352C-6033-46C9-B674-F8C94029FF27}"
+	ProjectSection(SolutionItems) = preProject
+		paket.dependencies = paket.dependencies
+	EndProjectSection
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test\Test.csproj", "{C7B89664-8FAD-486F-BC9E-CD3A30A71655}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeekoUtilsPack.AspNetCore", "ZeekoUtilsPack.AspNetCore\ZeekoUtilsPack.AspNetCore.csproj", "{F413C705-FC6E-4A9C-B527-1F73755580F6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeekoUtilsPack.BCLExt", "ZeekoUtilsPack.BCLExt\ZeekoUtilsPack.BCLExt.csproj", "{A9BBCE5C-BDC8-494A-9C4C-55CB7C8DCAA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionCache", "ExpressionCache\ExpressionCache.csproj", "{1839674D-2C3D-427C-A45C-56E18F60975C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +34,10 @@ Global
 		{A9BBCE5C-BDC8-494A-9C4C-55CB7C8DCAA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9BBCE5C-BDC8-494A-9C4C-55CB7C8DCAA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9BBCE5C-BDC8-494A-9C4C-55CB7C8DCAA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1839674D-2C3D-427C-A45C-56E18F60975C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1839674D-2C3D-427C-A45C-56E18F60975C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1839674D-2C3D-427C-A45C-56E18F60975C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1839674D-2C3D-427C-A45C-56E18F60975C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
