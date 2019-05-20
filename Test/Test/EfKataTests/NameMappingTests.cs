@@ -45,19 +45,20 @@ namespace Test.EfKataTests
         [Fact]
         public void ColumnNameTests()
         {
-            _efKata.Column((BlogPost p) => p.Id).Should().Be("my_awesome_post_id");
-            _efKata.Column((Category c) => c.Name).Should().Be(nameof(Category.Name));
-            _blogPost.Column(p => p.Id).Should().Be("my_awesome_post_id");
-            _category.Column(p => p.Name).Should().Be(nameof(Category.Name));
+            _efKata.Column((BlogPost p) => p.Id).Should().Be("my_awesome_blog_posts.my_awesome_post_id");
+            _efKata.Column((Category c) => c.Name).Should().Be(nameof(Category) + "." + nameof(Category.Name));
+            _blogPost.Column(p => p.Id).Should().Be("my_awesome_blog_posts.my_awesome_post_id");
+            _category.Column(p => p.Name).Should().Be(nameof(Category) + "." + nameof(Category.Name));
         }
 
         [Fact]
         public void ColumnsNameTests()
         {
             _efKata.Columns<BlogPost>().Should()
-                .BeEquivalentTo("my_awesome_post_id", "my_awesome_category_id", nameof(BlogPost.Title));
+                .BeEquivalentTo("my_awesome_blog_posts.my_awesome_post_id",
+                    "my_awesome_blog_posts.my_awesome_category_id", "my_awesome_blog_posts." + nameof(BlogPost.Title));
             _efKata.Columns<Category>().Should()
-                .BeEquivalentTo(nameof(Category.Name), nameof(Category.Id));
+                .BeEquivalentTo(nameof(Category) + "." +nameof(Category.Name), nameof(Category) + "." +nameof(Category.Id));
         }
 
         [Fact]
@@ -82,7 +83,8 @@ namespace Test.EfKataTests
             );
             db.SaveChanges();
             var compiler = new SqliteCompiler();
-            var query = new Query(_blogPost.Table).Where(_blogPost.Column(p => p.Title), "=", "Foo").Select(_blogPost.Columns);
+            var query = new Query(_blogPost.Table).Where(_blogPost.Column(p => p.Title), "=", "Foo")
+                .Select(_blogPost.Columns);
             var compileResult = compiler.Compile(query);
             var conn = db.Database.GetDbConnection();
             var result = conn.Query<BlogPost>(compileResult.Sql, compileResult.NamedBindings).ToList();

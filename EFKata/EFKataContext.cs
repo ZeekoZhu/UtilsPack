@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using ZeekoUtilsPack.ExpressionCache;
@@ -25,7 +27,13 @@ namespace ZeekoUtilsPack.EFKata
         private readonly IModel _model;
 
         private static readonly IExpressionCache<Expression, string>
-            Cache = new DictionaryExpressionCache<Expression, string>();
+            SelectorCache = new DictionaryExpressionCache<Expression, string>();
+
+        private static readonly ConcurrentDictionary<Type, string> TableNameCache =
+            new ConcurrentDictionary<Type, string>();
+
+        private static readonly ConcurrentDictionary<Type, string[]> TableColumnsCache =
+            new ConcurrentDictionary<Type, string[]>();
 
         public EfKataContext(IModel model)
         {
@@ -37,57 +45,88 @@ namespace ZeekoUtilsPack.EFKata
             return new EfKataEntityContext<TE>(_model);
         }
 
+        public string Table(Type type)
+        {
+            return TableNameCache.GetOrAdd(type, GetTableName);
+        }
+
         public string Table<T>()
         {
-            var tableModel = _model.FindEntityType(typeof(T));
-            if (tableModel is null)
-            {
-                throw new InvalidOperationException($"Can not find relationship model for {typeof(T).FullName}");
-            }
-
-            return tableModel.Relational().TableName;
+            var type = typeof(T);
+            return Table(type);
         }
 
         public string Column<TE, TP>(Expression<Func<TE, TP>> propertySelector)
         {
-            return Cache.GetOrAdd(propertySelector, (expr) =>
+            return SelectorCache.GetOrAdd(propertySelector, (expr) =>
             {
                 if (expr is Expression<Func<TE, TP>> selector)
                 {
-                    return GetPropertyColumnName(selector);
+                    return GetPropertyColumnNameFromSelector(selector);
                 }
 
                 throw new NotSupportedException("Only Lambda expression is supported.");
             });
         }
 
+        public string[] Columns(Type type)
+        {
+            return TableColumnsCache.GetOrAdd(type, GetAllColumns);
+        }
+
         public string[] Columns<T>()
         {
-            var tableModel = _model.FindEntityType(typeof(T));
+            var type = typeof(T);
+            return TableColumnsCache.GetOrAdd(type, GetAllColumns);
+        }
+
+        private string[] GetAllColumns(Type type)
+        {
+            var tableModel = _model.FindEntityType(type);
             if (tableModel is null)
             {
-                throw new InvalidOperationException($"Can not find relationship model for {typeof(T).FullName}");
+                throw new InvalidOperationException($"Can not find relationship model for {type.FullName}");
             }
 
+            var tableName = Table(type);
+
             return tableModel.GetProperties()
-                .Select(p => p.Relational().ColumnName)
+                .Select(p => $"{tableName}.{p.Relational().ColumnName}")
                 .ToArray();
         }
 
-        private string GetPropertyColumnName<TE, TP>(Expression<Func<TE, TP>> selector)
+        private string GetTableName(Type type)
+        {
+            var tableModel = _model.FindEntityType(type);
+            if (tableModel is null)
+            {
+                throw new InvalidOperationException($"Can not find relationship model for {type.FullName}");
+            }
+
+            return tableModel.Relational().TableName;
+        }
+
+        private string GetPropertyColumnName(MemberInfo memberInfo)
+        {
+            var entityType = memberInfo.DeclaringType;
+            if (entityType is null)
+            {
+                throw new InvalidOperationException(
+                    $"Can not find relationship model for {memberInfo.Name}");
+            }
+
+            var columnName = _model.FindEntityType(entityType).FindProperty(memberInfo.Name).Relational()
+                .ColumnName;
+            var tableName = Table(entityType);
+            return $"{tableName}.{columnName}";
+        }
+
+        private string GetPropertyColumnNameFromSelector<TE, TP>(Expression<Func<TE, TP>> selector)
         {
             switch (selector.Body)
             {
                 case MemberExpression memberExpr:
-                    var memberInfo = memberExpr.Member;
-                    var entityType = memberInfo.DeclaringType;
-                    if (entityType is null)
-                    {
-                        throw new InvalidOperationException(
-                            $"Can not find relationship model for {selector}");
-                    }
-
-                    return _model.FindEntityType(entityType).FindProperty(memberInfo.Name).Relational().ColumnName;
+                    return GetPropertyColumnName(memberExpr.Member);
                 default:
                     throw new InvalidOperationException("Only member assess expresion can be parsed.");
             }

@@ -1,6 +1,6 @@
 type project
 id ZeekoUtilsPack.EFKata
-version 1.0.0
+version 1.0.1
 authors Zeeko
 licenseUrl http://opensource.org/licenses/MIT
 projectUrl https://github.com/ZeekoZhu/UtilsPack
