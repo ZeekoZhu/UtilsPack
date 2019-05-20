@@ -6,3 +6,5 @@ Microsoft.Extensions.PlatformAbstractions
 Microsoft.NET.Test.Sdk
 xunit
 xunit.runner.visualstudio
+Microsoft.EntityFrameworkCore.Sqlite
+Dapper

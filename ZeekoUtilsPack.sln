@@ -16,6 +16,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeekoUtilsPack.BCLExt", "Ze
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionCache", "ExpressionCache\ExpressionCache.csproj", "{1839674D-2C3D-427C-A45C-56E18F60975C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFKata", "EFKata\EFKata.csproj", "{C4F0EEFB-D39B-4346-9E04-1B3F8C22272B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{1839674D-2C3D-427C-A45C-56E18F60975C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1839674D-2C3D-427C-A45C-56E18F60975C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1839674D-2C3D-427C-A45C-56E18F60975C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4F0EEFB-D39B-4346-9E04-1B3F8C22272B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4F0EEFB-D39B-4346-9E04-1B3F8C22272B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4F0EEFB-D39B-4346-9E04-1B3F8C22272B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4F0EEFB-D39B-4346-9E04-1B3F8C22272B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

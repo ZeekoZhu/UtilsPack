@@ -5,6 +5,7 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\EFKata\EFKata.csproj" />
     <ProjectReference Include="..\..\ExpressionCache\ExpressionCache.csproj" />
     <ProjectReference Include="..\..\ZeekoUtilsPack.AspNetCore\ZeekoUtilsPack.AspNetCore.csproj" />
     <ProjectReference Include="..\..\ZeekoUtilsPack.BCLExt\ZeekoUtilsPack.BCLExt.csproj" />

@@ -3,6 +3,7 @@ source https://api.nuget.org/v3/index.json
 storage: none
 framework: netstandard2.0, netcoreapp2.2
 
+nuget Dapper
 nuget FluentAssertions
 nuget Microsoft.AspNetCore
 nuget Microsoft.AspNetCore.Authentication.Cookies
@@ -10,9 +11,13 @@ nuget Microsoft.AspNetCore.Authentication.JwtBearer
 nuget Microsoft.AspNetCore.CookiePolicy
 nuget Microsoft.AspNetCore.Mvc
 nuget Microsoft.AspNetCore.Mvc.Testing
+nuget Microsoft.EntityFrameworkCore
+nuget Microsoft.EntityFrameworkCore.Relational
+nuget Microsoft.EntityFrameworkCore.Sqlite
 nuget Microsoft.Extensions.PlatformAbstractions
 nuget Microsoft.IdentityModel.Tokens
 nuget Microsoft.NET.Test.Sdk
+nuget SqlKata
 nuget xunit
 nuget xunit.runner.visualstudio
 // [ FAKE GROUP ]

@@ -1,0 +1,4 @@
+Microsoft.EntityFrameworkCore
+SqlKata
+Microsoft.EntityFrameworkCore.Relational
+Microsoft.Extensions.DependencyInjection.Abstractions
