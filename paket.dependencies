@@ -1,25 +1,28 @@
-source https://api.nuget.org/v3/index.json
-
+version 5.206.0
 storage: none
+source https://api.nuget.org/v3/index.json
 framework: netstandard2.0, netcoreapp2.2
 
-nuget Dapper
-nuget FluentAssertions
-nuget Microsoft.AspNetCore
-nuget Microsoft.AspNetCore.Authentication.Cookies
-nuget Microsoft.AspNetCore.Authentication.JwtBearer
-nuget Microsoft.AspNetCore.CookiePolicy
-nuget Microsoft.AspNetCore.Mvc
-nuget Microsoft.AspNetCore.Mvc.Testing
-nuget Microsoft.EntityFrameworkCore
-nuget Microsoft.EntityFrameworkCore.Relational
-nuget Microsoft.EntityFrameworkCore.Sqlite
-nuget Microsoft.Extensions.PlatformAbstractions
-nuget Microsoft.IdentityModel.Tokens
-nuget Microsoft.NET.Test.Sdk
-nuget SqlKata
-nuget xunit
-nuget xunit.runner.visualstudio
+nuget Microsoft.AspNetCore.Authentication.Cookies ~> 2.2
+nuget Microsoft.AspNetCore.Authentication.JwtBearer ~> 2.2
+nuget Microsoft.AspNetCore.Mvc ~> 2.2
+nuget Microsoft.EntityFrameworkCore ~> 2.2
+nuget Microsoft.EntityFrameworkCore.Relational ~> 2.2
+nuget Microsoft.IdentityModel.Tokens ~> 5.4
+nuget SqlKata ~> 1.1
+group Test
+    storage: none
+    source https://api.nuget.org/v3/index.json
+    framework: netstandard2.0, netcoreapp2.2
+    nuget xunit
+    nuget xunit.runner.visualstudio
+    nuget FluentAssertions
+    nuget Microsoft.AspNetCore.Mvc.Testing
+    nuget Microsoft.Extensions.PlatformAbstractions
+    nuget Microsoft.EntityFrameworkCore.Sqlite
+    nuget Microsoft.AspNetCore.CookiePolicy
+    nuget Dapper
+    nuget Microsoft.AspNetCore
 // [ FAKE GROUP ]
 group Build
     storage: none
@@ -27,5 +30,4 @@ group Build
     source https://api.nuget.org/v3/index.json
     source https://www.myget.org/F/zeekoget/api/v3/index.json
     nuget Fake.DotNet.Cli
-    nuget FSharp.Core
     nuget MyFakeTools ~> 0.0.14

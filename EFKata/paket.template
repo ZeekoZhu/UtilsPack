@@ -1,0 +1,9 @@
+type project
+id ZeekoUtilsPack.EFKata
+version 1.0.0
+authors Zeeko
+licenseUrl http://opensource.org/licenses/MIT
+projectUrl https://github.com/ZeekoZhu/UtilsPack
+description Use table name mappings defined in EFCore with SqlKata
+dependencies
+    framework: netstandard2.0

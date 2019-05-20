@@ -55,7 +55,7 @@ namespace Test.EfKataTests
         public void ColumnsNameTests()
         {
             _efKata.Columns<BlogPost>().Should()
-                .BeEquivalentTo("my_awesome_post_id", "my_awesome_category_id");
+                .BeEquivalentTo("my_awesome_post_id", "my_awesome_category_id", nameof(BlogPost.Title));
             _efKata.Columns<Category>().Should()
                 .BeEquivalentTo(nameof(Category.Name), nameof(Category.Id));
         }

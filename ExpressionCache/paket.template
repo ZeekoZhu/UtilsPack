@@ -1,0 +1,9 @@
+type project
+id ZeekoUtilsPack.ExpressionCache
+version 1.0.0
+authors Zeeko
+licenseUrl http://opensource.org/licenses/MIT
+projectUrl https://github.com/ZeekoZhu/UtilsPack
+description A cache that can use expression tree as cache key
+dependencies
+    framework: netstandard2.0

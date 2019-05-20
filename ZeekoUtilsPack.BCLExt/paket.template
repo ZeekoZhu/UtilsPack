@@ -1,0 +1,9 @@
+type project
+id ZeekoUtilsPack.BCLExt
+version 1.2.1
+authors Zeeko
+licenseUrl http://opensource.org/licenses/MIT
+projectUrl https://github.com/ZeekoZhu/UtilsPack
+description Some extension methods for BCL types
+dependencies
+    framework: netstandard2.0
