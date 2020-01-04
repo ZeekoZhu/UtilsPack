@@ -1,33 +1,25 @@
-version 5.206.0
+version 5.226.0
 storage: none
 source https://api.nuget.org/v3/index.json
-framework: netstandard2.0, netcoreapp2.2
+framework: auto-detect
 
 nuget Microsoft.AspNetCore.Authentication.Cookies ~> 2.2
 nuget Microsoft.AspNetCore.Authentication.JwtBearer ~> 2.2
 nuget Microsoft.AspNetCore.Mvc ~> 2.2
-nuget Microsoft.EntityFrameworkCore ~> 2.2
-nuget Microsoft.EntityFrameworkCore.Relational ~> 2.2
-nuget Microsoft.IdentityModel.Tokens ~> 5.4
-nuget SqlKata ~> 1.1
+nuget Microsoft.IdentityModel.Tokens
 group Test
     storage: none
     source https://api.nuget.org/v3/index.json
-    framework: netstandard2.0, netcoreapp2.2
+    framework: auto-detect
     nuget xunit
     nuget xunit.runner.visualstudio
     nuget FluentAssertions
     nuget Microsoft.AspNetCore.Mvc.Testing
-    nuget Microsoft.Extensions.PlatformAbstractions
-    nuget Microsoft.EntityFrameworkCore.Sqlite
-    nuget Microsoft.AspNetCore.CookiePolicy
-    nuget Dapper
-    nuget Microsoft.AspNetCore
 // [ FAKE GROUP ]
 group Build
     storage: none
-    framework: netstandard2.0
+    framework: auto-detect
     source https://api.nuget.org/v3/index.json
     source https://www.myget.org/F/zeekoget/api/v3/index.json
     nuget Fake.DotNet.Cli
-    nuget MyFakeTools ~> 0.0.14
+    nuget MyFakeTools ~> 0.0.16

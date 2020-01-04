@@ -1,10 +1,5 @@
 group Test
 FluentAssertions
-Microsoft.AspNetCore
-Microsoft.AspNetCore.CookiePolicy
 Microsoft.AspNetCore.Mvc.Testing
-Microsoft.Extensions.PlatformAbstractions
 xunit
 xunit.runner.visualstudio
-Microsoft.EntityFrameworkCore.Sqlite
-Dapper

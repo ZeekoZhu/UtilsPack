@@ -18,10 +18,20 @@ namespace ZeekoUtilsPack.AspNetCore.Jwt
         {
             string filename = withPrivate ? "key.json" : "key.public.json";
             filePath = Path.Combine(filePath, filename);
-            keyParameters = default(RSAParameters);
+            keyParameters = default;
             if (File.Exists(filePath) == false) return false;
-            keyParameters = JsonConvert.DeserializeObject<RsaParameterStorage>(File.ReadAllText(filePath)).Map()
-                .To<RSAParameters>();
+            var stored = JsonConvert.DeserializeObject<RsaParameterStorage>(File.ReadAllText(filePath));
+            keyParameters = new RSAParameters
+            {
+                D = stored.D,
+                DP = stored.DP,
+                Exponent = stored.Exponent,
+                DQ = stored.DQ,
+                InverseQ = stored.InverseQ,
+                Modulus = stored.Modulus,
+                P = stored.P,
+                Q = stored.Q
+            };
             return true;
         }
 
@@ -64,7 +74,17 @@ namespace ZeekoUtilsPack.AspNetCore.Jwt
 
         static string ToJsonString(this RSAParameters parameters)
         {
-            var content = parameters.Map().To<RsaParameterStorage>();
+            var content = new RsaParameterStorage
+            {
+                D = parameters.D,
+                DP = parameters.DP,
+                Exponent = parameters.Exponent,
+                DQ = parameters.DQ,
+                InverseQ = parameters.InverseQ,
+                Modulus = parameters.Modulus,
+                P = parameters.P,
+                Q = parameters.Q
+            };
             return JsonConvert.SerializeObject(content);
         }
     }

@@ -1,6 +1,6 @@
 type project
 id ZeekoUtilsPack.BCLExt
-version 1.2.1
+version 2.0.0
 authors Zeeko
 licenseUrl http://opensource.org/licenses/MIT
 projectUrl https://github.com/ZeekoZhu/UtilsPack

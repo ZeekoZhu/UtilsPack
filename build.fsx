@@ -15,8 +15,7 @@ let inline withWorkDir wd =
     DotNet.Options.withWorkingDirectory wd
 
 let packages =
-    !! "./EFKata/*.csproj"
-    ++ "./ExpressionCache/*.csproj"
+    !! "./ExpressionCache/*.csproj"
     ++ "./ZeekoUtilsPack.AspNetCore/*.csproj"
     ++ "./ZeekoUtilsPack.BCLExt/*.csproj"
 
