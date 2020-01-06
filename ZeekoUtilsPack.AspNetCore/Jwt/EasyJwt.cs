@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Text;
@@ -38,27 +39,33 @@ namespace ZeekoUtilsPack.AspNetCore.Jwt
             ClaimsIdentity identity = new ClaimsIdentity(new GenericIdentity(userName));
             identity.AddClaims(claims);
             var handler = new JwtSecurityTokenHandler();
-            var token = handler.CreateEncodedJwt(new SecurityTokenDescriptor
-            {
-                Issuer = _option.Issuer,
-                Audience = _option.Audience,
-                SigningCredentials = _option.GenerateCredentials(),
-                Subject = identity,
-                Expires = expiratoin
-            });
+            var token = handler.CreateEncodedJwt(
+                new SecurityTokenDescriptor
+                {
+                    Issuer = _option.Issuer,
+                    Audience = _option.Audience,
+                    SigningCredentials = _option.GenerateCredentials(),
+                    Subject = identity,
+                    Expires = expiratoin
+                });
             return token;
         }
 
-        public (ClaimsPrincipal, AuthenticationProperties) GenerateAuthTicket(string userName, IEnumerable<Claim> claims, DateTime expiratoin)
+        public (ClaimsPrincipal, AuthenticationProperties) GenerateAuthTicket(
+            string userName,
+            IEnumerable<Claim> claims,
+            DateTime expiration)
         {
-            var principal = new ClaimsPrincipal();
+            var claimsList = claims.ToList();
+            var principal = new ClaimsPrincipal(new ClaimsIdentity(claimsList, "EasyJwt"));
             var authProps = new AuthenticationProperties();
-            var token = GenerateToken(userName, claims, expiratoin);
-            authProps.StoreTokens(new[]
-            {
-                new AuthenticationToken
-                    {Name = JwtBearerDefaults.AuthenticationScheme ,Value = token}
-            });
+            var token = GenerateToken(userName, claimsList, expiration);
+            authProps.StoreTokens(
+                new[]
+                {
+                    new AuthenticationToken
+                        { Name = JwtBearerDefaults.AuthenticationScheme, Value = token }
+                });
             return (principal, authProps);
         }
     }
@@ -68,14 +75,17 @@ namespace ZeekoUtilsPack.AspNetCore.Jwt
         public string Audience { get; set; }
         public string Issuer { get; set; }
         public bool EnableCookie { get; set; }
+
         /// <summary>
         /// 自定义 Cookie 选项，可空
         /// </summary>
         public Action<CookieAuthenticationOptions> CookieOptions { get; set; }
+
         /// <summary>
         /// 自定义 jwt 选项，可空
         /// </summary>
         public Action<JwtBearerOptions> JwtOptions { get; set; }
+
         public abstract SecurityKey GenerateKey();
         public abstract SigningCredentials GenerateCredentials();
     }
@@ -93,6 +103,7 @@ namespace ZeekoUtilsPack.AspNetCore.Jwt
         }
 
         public string Path { get; set; }
+
         public override SecurityKey GenerateKey()
         {
             if (RsaUtils.TryGetKeyParameters(Path, true, out var rsaParams) == false)
@@ -118,6 +129,7 @@ namespace ZeekoUtilsPack.AspNetCore.Jwt
         }
 
         public string Secret { get; set; }
+
         public override SecurityKey GenerateKey()
         {
             return new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Secret));

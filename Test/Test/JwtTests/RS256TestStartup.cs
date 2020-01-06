@@ -10,17 +10,20 @@ namespace Test.JwtTests
 {
     public class RS256TestStartup
     {
-        public RS256TestStartup(IConfiguration configuration)
+        private readonly IWebHostEnvironment _env;
+
+        public RS256TestStartup(IConfiguration configuration, IWebHostEnvironment env)
         {
+            _env = env;
             Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services, IWebHostEnvironment env)
+        public virtual void ConfigureServices(IServiceCollection services)
         {
-            services.AddEasyJwt(new EasyRSAOptions(env.ContentRootPath)
+            services.AddEasyJwt(new EasyRSAOptions(_env.ContentRootPath)
             {
                 Audience = "test",
                 Issuer = "test",
@@ -43,6 +46,7 @@ namespace Test.JwtTests
             app.UseRouting();
             app.UseAuthentication();
             app.UseCookiePolicy();
+            app.UseAuthorization();
 
             app.UseEndpoints(
                 endpoints =>

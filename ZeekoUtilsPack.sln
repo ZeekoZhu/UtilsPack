@@ -28,6 +28,10 @@ ProjectSection(SolutionItems) = preProject
 	paket.lock = paket.lock
 EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeeko.BaseDevel.DependencyInjection", "Zeeko.BaseDevel.DependencyInjection\Zeeko.BaseDevel.DependencyInjection.csproj", "{C3561837-FF1E-4DEA-AAE8-848D620EF711}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleAssembly", "Test\ExampleAssembly\ExampleAssembly.csproj", "{61169628-433E-43C1-B0B9-E5B42DF6ABAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +54,14 @@ Global
 		{1839674D-2C3D-427C-A45C-56E18F60975C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1839674D-2C3D-427C-A45C-56E18F60975C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1839674D-2C3D-427C-A45C-56E18F60975C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3561837-FF1E-4DEA-AAE8-848D620EF711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3561837-FF1E-4DEA-AAE8-848D620EF711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3561837-FF1E-4DEA-AAE8-848D620EF711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3561837-FF1E-4DEA-AAE8-848D620EF711}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61169628-433E-43C1-B0B9-E5B42DF6ABAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61169628-433E-43C1-B0B9-E5B42DF6ABAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61169628-433E-43C1-B0B9-E5B42DF6ABAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61169628-433E-43C1-B0B9-E5B42DF6ABAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,7 @@
+type project
+id Zeeko.BaseDevel.DependencyInjection
+version 0.0.1
+authors Zeeko
+licenseUrl http://opensource.org/licenses/MIT
+projectUrl https://github.com/ZeekoZhu/UtilsPack
+description Some useful classes for aspnetcore web service development

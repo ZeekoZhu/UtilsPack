@@ -6,8 +6,10 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ExpressionCache\ExpressionCache.csproj" />
+    <ProjectReference Include="..\..\Zeeko.BaseDevel.DependencyInjection\Zeeko.BaseDevel.DependencyInjection.csproj" />
     <ProjectReference Include="..\..\ZeekoUtilsPack.AspNetCore\ZeekoUtilsPack.AspNetCore.csproj" />
     <ProjectReference Include="..\..\ZeekoUtilsPack.BCLExt\ZeekoUtilsPack.BCLExt.csproj" />
+    <ProjectReference Include="..\ExampleAssembly\ExampleAssembly.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Moq" Version="4.10.1" />

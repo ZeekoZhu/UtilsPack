@@ -7,6 +7,7 @@ nuget Microsoft.AspNetCore.Authentication.Cookies ~> 2.2
 nuget Microsoft.AspNetCore.Authentication.JwtBearer ~> 2.2
 nuget Microsoft.AspNetCore.Mvc ~> 2.2
 nuget Microsoft.IdentityModel.Tokens
+nuget Microsoft.Extensions.DependencyInjection.Abstractions ~> 3.1
 group Test
     storage: none
     source https://api.nuget.org/v3/index.json
@@ -23,3 +24,4 @@ group Build
     source https://www.myget.org/F/zeekoget/api/v3/index.json
     nuget Fake.DotNet.Cli
     nuget MyFakeTools ~> 0.0.16
+nuget Fake.DotNet.Paket
